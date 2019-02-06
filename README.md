@@ -107,5 +107,5 @@ curl -X PUT http://localhost:8080/offers \
 > Before an offer has expired users may cancel it
 
 ```
-curl http://localhost:8080/offers/1/cancel --header accept:application/json
+curl -X PUT http://localhost:8080/offers/1/cancel --header accept:application/json
 ```
