@@ -21,7 +21,7 @@ You can view the API documentation at [localhost:8080/swagger-ui.html]([http://l
 ## 🛌 REST
 
 I've tried to follow the "principle of least surprise", and I've assumed the user is a person manually testing out this
-service with some kind of simple client like curl. For exampel, in ordinary circumstances I might not have provided an explicit
+service with some kind of simple client like curl. For example, in ordinary circumstances I might not have provided an explicit
 `cancel` endpoint to set the validity of the offer to `false` - I often follow the Apigee guidelines for API design,
 [but I've broken them here](https://apigee.com/about/blog/technology/restful-api-design-nouns-are-good-verbs-are-bad).
 
@@ -107,5 +107,5 @@ curl -X POST http://localhost:8080/offers \
 > Before an offer has expired users may cancel it
 
 ```
-curl http://localhost:8080/offers/1/cancel --header accept:application/json
+curl -X PUT http://localhost:8080/offers/1/cancel --header accept:application/json
 ```
