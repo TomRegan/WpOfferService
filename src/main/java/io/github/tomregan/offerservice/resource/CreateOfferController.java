@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,7 +34,7 @@ import static io.github.tomregan.offerservice.resource.response.OfferResponse.of
             @ApiResponse(code = 400, message = "Bad Request")
     )
     @SuppressWarnings("unused")
-    @PutMapping(path = "/offers", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(path = "/offers", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     OfferResponse create(@Valid @RequestBody OfferRequest offer) {
         logger.info("Creating offer {}", offer);
         OfferResponse response = offerResponse(offerService.createOffer(offerBuilder()

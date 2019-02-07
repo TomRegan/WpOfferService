@@ -96,7 +96,7 @@ curl http://localhost:8080/offers/1 --header accept:application/json
 *Request*
 
 ```
-curl -X PUT http://localhost:8080/offers \
+curl -X POST http://localhost:8080/offers \
 --header accept:application/json \
 --header content-type:application/json \
 --data '{ "currency": { "amount": 10, "code": "GBP" }, "description": "A fantastic offer", "expiry": "2207-02-06T18:50:12.358Z", "valid": true}'

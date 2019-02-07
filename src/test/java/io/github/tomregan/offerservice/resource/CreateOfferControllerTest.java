@@ -21,6 +21,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -34,7 +35,7 @@ class CreateOfferControllerTest {
     @Test void validOffer() throws Exception {
         doReturn(anyOfferData()).when(offerService).createOffer(any(OfferData.class));
 
-        mvc.perform(put("/offers")
+        mvc.perform(post("/offers")
                 .content(json(anyOfferRequest()))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -44,14 +45,14 @@ class CreateOfferControllerTest {
     }
 
     @Test void invalidOffer() throws Exception {
-        mvc.perform(put("/offers")
+        mvc.perform(post("/offers")
                 .content("{}")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }
 
     @Test void missingContentType() throws Exception {
-        mvc.perform(put("/offers")
+        mvc.perform(post("/offers")
                 .content(json(anyOfferRequest())))
                 .andExpect(status().isUnsupportedMediaType());
     }
